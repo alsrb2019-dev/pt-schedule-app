@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<title>PT 스케줄</title>
+
+<!-- iOS 홈 화면 추가(PWA) 지원 -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="PT 스케줄" />
+<meta name="theme-color" content="#0b0b0f" />
+<link rel="manifest" href="manifest.json" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="app">
+
+  <form id="quickAddForm" class="quick-add-bar">
+    <input id="quickAddInput" type="text" placeholder="김철수, 월 14:00" autocomplete="off" />
+    <button type="submit" class="quick-add-btn" aria-label="등록">등록</button>
+  </form>
+  <p id="quickAddMsg" class="quick-add-msg"></p>
+  <p class="quick-add-hint">예) 김철수, 월 14:00 (매주 반복) · 김철수, 9/28 15시 (그날만) · 김철수, 오늘 오후 3시</p>
+
+  <header class="topbar">
+    <button id="prevMonth" class="nav-btn" aria-label="이전 달">‹</button>
+    <div class="title-group">
+      <h1 id="monthLabel">2026년 9월</h1>
+      <button id="todayBtn" class="today-btn">오늘</button>
+    </div>
+    <button id="nextMonth" class="nav-btn" aria-label="다음 달">›</button>
+  </header>
+
+  <section class="weekdays">
+    <span class="sun">일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span class="sat">토</span>
+  </section>
+
+  <section id="calendarGrid" class="calendar-grid"></section>
+
+  <section id="dayPanel" class="day-panel">
+    <div class="day-panel-header">
+      <h2 id="selectedDateLabel">날짜를 선택하세요</h2>
+    </div>
+
+    <div class="list-block">
+      <div class="list-block-header">
+        <h3>수업</h3>
+      </div>
+      <ul id="classList" class="item-list"></ul>
+      <form id="classForm" class="add-form">
+        <input id="classTime" type="time" class="time-input" />
+        <input id="classMember" type="text" placeholder="회원 이름 (그날만 등록)" maxlength="40" required />
+        <button type="submit" class="add-btn" aria-label="수업 추가">+</button>
+      </form>
+    </div>
+
+    <div class="list-block">
+      <div class="list-block-header">
+        <h3>할 일</h3>
+      </div>
+      <ul id="todoList" class="item-list"></ul>
+      <form id="todoForm" class="add-form">
+        <input id="todoTitle" type="text" placeholder="할 일 추가" maxlength="80" required />
+        <button type="submit" class="add-btn" aria-label="할 일 추가">+</button>
+      </form>
+    </div>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
